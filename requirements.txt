@@ -1,0 +1,3 @@
+# playwright==1.42.0  playwright install
+# axe-core==4.8.5  pip install -U axe-core-python
+# pytest==8.1.1  pip install pytest-playwright
