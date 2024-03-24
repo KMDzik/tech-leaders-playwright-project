@@ -14,7 +14,7 @@ This is a project with basic test automation to verify whether websites meet dig
 
 # Technology stack
 - Python
-- PlayWright (axe-core)
+- Playwright
 
 
 
@@ -41,28 +41,22 @@ source .venv/bin/activate
 .venv\Scripts\Activate.ps1
 ```
 
-- Use pip to install libraries
+- Use requirements.txt to install libraries
   
 ```sh
-# Newly install libraries
-pip install <library name>
-
 # Install libraries using requirements.txt
 pip install -r requirements.txt
-
-# Create requirements.txt
-pip freeze > requirements.txt
 ```
 
-## Installing Playwright Pytest
+## Installing Playwright With Pytest (make both steps)
 
-- Install the Pytest plugin:
+- Install Pytest:
 
 ```
 pip install pytest-playwright
 ```
 
-- Install the required browsers:
+- Install Playwright:
 ```
 playwright install
 ```
@@ -75,6 +69,6 @@ Just run a command:
 pytest
 ```
 
-in a main directory of the project
+in a main directory of the project.
 
 > Make sure your test name follows the `test_` prefix convention, for example `test_example.py`
