@@ -1,7 +1,7 @@
 # ✨ tech-leaders-project
 
 
-This is a project with basic test automation to verify whether websites meet digital accessibility requirements.
+This is a project with basic test automation allowing to find the cheapest airline tickets on a given flight destination.
 
 
 # Directory structure
@@ -48,7 +48,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Installing Playwright With Pytest (make both steps)
+## Installing Playwright With Pytest
 
 - Install Pytest:
 
