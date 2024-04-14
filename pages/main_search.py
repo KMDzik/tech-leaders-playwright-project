@@ -1,4 +1,4 @@
-from playwright.sync_api import Page, sync_playwright, expect
+from playwright.sync_api import Page
 
 
 class MainSearchPage:
@@ -30,14 +30,8 @@ class MainSearchPage:
         self.arrival_field.fill(arrival_airport)
         self.arrival_airport_list.click()
 
-    def set_departure_date(self):
+    def set_departure_date(self) -> None:
         self.departure_date.click()
 
-    def set_return_date(self):
+    def set_return_date(self) -> None:
         self.return_date.click()
-
-
-
-
-
-

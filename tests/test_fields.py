@@ -4,7 +4,7 @@ from pages.main_search import MainSearchPage
 
 def test_check_main_search():
 
-    # Dlaczego nie mogłam zaimportować klasy
+    # Dlaczego nie mogłam zaimportować klasy playwright.config.py
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
@@ -13,20 +13,9 @@ def test_check_main_search():
         main_search_page.open_esky()
         main_search_page.accept_cookies()
         main_search_page.search_departure("WAW")
-
-
-        main_search_page.departure_airport_list()
-        # TypeError: 'Locator' object is not callable
-
         main_search_page.search_arrival("NFC")
-
-        # main_search_page.arrival_airport_list()
-        # TypeError: 'Locator' object is not callable
-
         main_search_page.set_departure_date()
-
         main_search_page.return_date()
 
-        page.pause()
         browser.close()
 
