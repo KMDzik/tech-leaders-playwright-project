@@ -1,37 +1,32 @@
-from playwright.sync_api import Playwright, sync_playwright, expect
+from playwright.sync_api import Page, sync_playwright
+from pages.main_search import MainSearchPage
 
 
-def test_check_main_search(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context()
-    page = context.new_page()
-    page.goto("https://www.esky.pl/")
-    page.get_by_test_id("uc-accept-all-button").click()
-    page.get_by_role("textbox", name="Miejsce wylotu").click()
-    page.get_by_role("textbox", name="Miejsce wylotu").fill("Warszawa")
-    page.get_by_role("link", name="Warszawa - wszystkie lotniska").click()
-    page.get_by_role("textbox", name="Miejsce przylotu").click()
-    page.get_by_role("textbox", name="Miejsce przylotu").fill("Paryż, Francja")
-    page.get_by_role("link", name="Paryż - wszystkie lotniska").click()
-    page.get_by_role("link", name="7", exact=True).click()
-    page.get_by_role("link", name="10", exact=True).click()
-    page.get_by_role("link", name="Gotowe").click()
-    page.get_by_role("button", name="").click()
+def test_check_main_search():
 
-    # ---------------------
-    context.close()
-    browser.close()
+    # Dlaczego nie mogłam zaimportować klasy
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        main_search_page = MainSearchPage(page)
+        main_search_page.open_esky()
+        main_search_page.accept_cookies()
+        main_search_page.search_departure("WAW")
 
 
-with sync_playwright() as playwright:
-    test_check_main_search(playwright)
+        main_search_page.departure_airport_list()
+        # TypeError: 'Locator' object is not callable
 
+        main_search_page.search_arrival("NFC")
 
-# def test_get_started_link(page: Page):
-  # page.goto("https://playwright.dev/")
+        # main_search_page.arrival_airport_list()
+        # TypeError: 'Locator' object is not callable
 
-    # Click the get started link.
-   # page.get_by_role("link", name="Get started").click()
+        main_search_page.set_departure_date()
 
-    # Expects page to have a heading with the name of Installation.
-   # expect(page.get_by_role("heading", name="Installation")).to_be_visible()
+        main_search_page.return_date()
+
+        page.pause()
+        browser.close()
+
