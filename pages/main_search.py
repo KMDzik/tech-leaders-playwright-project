@@ -15,9 +15,10 @@ class MainSearchPage:
         self.departure_airport_list = page.get_by_text("Warszawa, Chopina, mazowieckie, Polska (WAW)")
         self.arrival_field = page.locator("#arrivalRoundtrip0")
         self.arrival_airport_list = page.get_by_text("Funchal, Madera, Madera, Portugalia (FNC)")
-        self.departure_date = page.get_by_role("button", name="ui-datepicker-trigger")
-        self.return_date = page.locator("#departureDateRoundtrip1")
-        self.search_button = page.get_by_role("button", name="Szukaj lotu")
+        # self.departure_date = page.get_by_role("button", name="ui-datepicker-trigger")
+        self.departure_date = page.locator("input[id='departureDateRoundtrip0']")
+        self.return_date = page.locator("input[id='departureDateRoundtrip1']")
+        self.search_button = page.locator(".btn.transaction.qsf-search")
 
     def open_esky(self) -> None:
         self.page.goto(self.URL)
@@ -32,11 +33,15 @@ class MainSearchPage:
     def search_arrival(self, arrival_airport: str) -> None:
         self.arrival_field.click()
         self.arrival_field.fill(arrival_airport)
+        self.search_button.click()
+        self.arrival_field.click()
         self.arrival_airport_list.click()
 
     def set_departure_date(self) -> None:
-        self.departure_date.click()
-        self.calendar_page.selected_date()
+        # self.departure_date.click()
+        # self.calendar_page.selected_date()
+        self.departure_date.type("2024-04-24")
 
     def set_return_date(self) -> None:
-        self.return_date.click()
+        # self.return_date.click()
+        self.return_date.type("2024-05-09")
