@@ -38,10 +38,13 @@ class MainSearchPage:
         self.arrival_airport_list.click()
 
     def set_departure_date(self) -> None:
-        # self.departure_date.click()
-        # self.calendar_page.selected_date()
-        self.departure_date.type("2024-04-24")
+        self.departure_date.click()
+        self.calendar_page.select_today_from_calendar()
 
     def set_return_date(self) -> None:
-        # self.return_date.click()
-        self.return_date.type("2024-05-09")
+        self.return_date.click()
+        self.calendar_page.go_to_next_month()
+        self.calendar_page.select_x_day_next_month("3")
+    
+    def click_search_btn(self) -> None:
+        self.search_button.click()

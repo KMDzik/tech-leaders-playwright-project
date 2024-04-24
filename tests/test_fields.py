@@ -20,7 +20,6 @@ def test_check_main_search():
         main_search_page.set_departure_date()
 
         main_search_page.set_return_date()
-        main_search_page.search_button.click()
         time.sleep(20)
         browser.close()
 
