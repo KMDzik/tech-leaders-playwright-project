@@ -12,7 +12,7 @@ class MainSearchPage:
         self.departure_airport_list = page.get_by_text("Warszawa, Chopina, mazowieckie, Polska (WAW)")
         self.arrival_field = page.locator("#arrivalRoundtrip0")
         self.arrival_airport_list = page.get_by_text("Funchal, Madera, Madera, Portugalia (FNC)")
-        self.departure_date = page.locator("#departureDateRoundtrip0")
+        self.departure_date = page.get_by_role("button", name="ui-datepicker-trigger")
         self.return_date = page.locator("#departureDateRoundtrip1")
         self.search_button = page.get_by_role("button", name="Szukaj lotu")
 
@@ -26,9 +26,10 @@ class MainSearchPage:
         self.departure_field.fill(departure_airport)
         self.departure_airport_list.click()
 
-    def search_arrival(self, arrival_airport: str) -> None:
-        self.arrival_field.fill(arrival_airport)
-        self.arrival_airport_list.click()
+    # def search_arrival(self, arrival_airport: str) -> None:
+    #     self.arrival_field.click()
+    #     self.arrival_field.fill(arrival_airport)
+    #     self.arrival_airport_list.click()
 
     def set_departure_date(self) -> None:
         self.departure_date.click()
