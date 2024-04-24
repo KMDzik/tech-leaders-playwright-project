@@ -1,5 +1,7 @@
 from playwright.sync_api import Page
 
+from pages.calendar import CalendarPage
+
 
 class MainSearchPage:
 
@@ -7,6 +9,7 @@ class MainSearchPage:
 
     def __init__(self, page: Page) -> None:
         self.page = page
+        self.calendar_page = CalendarPage(page)
         self.accept_cookies_button = page.get_by_test_id("uc-accept-all-button")
         self.departure_field = page.locator("#departureRoundtrip0")
         self.departure_airport_list = page.get_by_text("Warszawa, Chopina, mazowieckie, Polska (WAW)")
@@ -26,13 +29,14 @@ class MainSearchPage:
         self.departure_field.fill(departure_airport)
         self.departure_airport_list.click()
 
-    # def search_arrival(self, arrival_airport: str) -> None:
-    #     self.arrival_field.click()
-    #     self.arrival_field.fill(arrival_airport)
-    #     self.arrival_airport_list.click()
+    def search_arrival(self, arrival_airport: str) -> None:
+        self.arrival_field.click()
+        self.arrival_field.fill(arrival_airport)
+        self.arrival_airport_list.click()
 
     def set_departure_date(self) -> None:
         self.departure_date.click()
+        self.calendar_page.selected_date()
 
     def set_return_date(self) -> None:
         self.return_date.click()
