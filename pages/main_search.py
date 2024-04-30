@@ -46,5 +46,9 @@ class MainSearchPage:
         self.calendar_page.go_to_next_month()
         self.calendar_page.select_x_day_next_month("3")
     
-    def click_search_btn(self) -> None:
+    def click_search_btn_and_check_url(self) -> None:
         self.search_button.click()
+        self.search_button.click()
+        self.page.wait_for_load_state('load')
+        current_url = self.page.url
+        assert current_url != self.URL, "URL is changed."
