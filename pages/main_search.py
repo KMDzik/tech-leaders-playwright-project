@@ -51,4 +51,4 @@ class MainSearchPage:
         self.search_button.click()
         self.page.wait_for_load_state('load')
         current_url = self.page.url
-        assert current_url != self.URL, "URL is changed."
+        assert current_url != self.URL, "URL was not changed."

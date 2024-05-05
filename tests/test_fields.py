@@ -10,17 +10,14 @@ def test_check_main_search():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         page = browser.new_page()
-
         main_search_page = MainSearchPage(page)
         main_search_page.open_esky()
         main_search_page.accept_cookies()
-
         main_search_page.search_departure("WAW")
         main_search_page.search_arrival("FNC")
-
         main_search_page.set_departure_date()
         main_search_page.set_return_date()
-
         main_search_page.click_search_btn_and_check_url()
-
+        # jak zrobic asercje do, ktora pokaze czy na kolejnej stronie wyswietlaja sie odpowiednie miasta/daty
+        page.pause()
         browser.close()
