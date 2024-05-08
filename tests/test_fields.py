@@ -18,6 +18,6 @@ def test_check_main_search():
         main_search_page.set_departure_date()
         main_search_page.set_return_date()
         main_search_page.click_search_btn_and_check_url()
-        # jak zrobic asercje do, ktora pokaze czy na kolejnej stronie wyswietlaja sie odpowiednie miasta/daty
+        # TODO zrobic asercję ktora pokaze czy na kolejnej stronie wyswietlaja sie odpowiednie miasta/daty
         page.pause()
         browser.close()

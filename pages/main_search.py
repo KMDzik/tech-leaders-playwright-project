@@ -15,7 +15,6 @@ class MainSearchPage:
         self.departure_airport_list = page.get_by_text("Warszawa, Chopina, mazowieckie, Polska (WAW)")
         self.arrival_field = page.locator("#arrivalRoundtrip0")
         self.arrival_airport_list = page.get_by_text("Funchal, Madera, Madera, Portugalia (FNC)")
-        # self.departure_date = page.get_by_role("button", name="ui-datepicker-trigger")
         self.departure_date = page.locator("input[id='departureDateRoundtrip0']")
         self.return_date = page.locator("input[id='departureDateRoundtrip1']")
         self.search_button = page.locator(".btn.transaction.qsf-search")
