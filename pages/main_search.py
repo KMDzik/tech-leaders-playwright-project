@@ -37,9 +37,12 @@ class MainSearchPage:
         self.arrival_field.click()
         self.arrival_airport_list.click()
 
+    # def set_departure_date(self) -> None:
+    #     self.departure_date.click()
+    #     self.calendar_page.select_today_from_calendar()
+
     def set_departure_date(self) -> None:
-        self.departure_date.click()
-        self.calendar_page.select_today_from_calendar()
+        self.calendar_page.select_departure_date()
 
     def set_return_date(self) -> None:
         self.return_date.click()
